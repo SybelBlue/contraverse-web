@@ -17,6 +17,11 @@ defmodule ContraWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/login", LoginController, :index
+    get "/home", HomeController, :index
+    get "/new", NewController, :index #I can't think of a better name for the new-user screen
+
+
   end
 
   # Other scopes may use custom stacks.
