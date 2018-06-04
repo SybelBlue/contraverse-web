@@ -1,4 +1,4 @@
-defmodule ContraWeb.PageController do
+defmodule ContraWeb.HomeController do
   use ContraWeb, :controller
 
   def index(conn, _params) do

@@ -1,0 +1,10 @@
+<h1>Convo Setup!</h1>
+<div>
+  home > <%= @category %>
+</div>
+<ul id="link-list">
+  <li class="link-item">American Politics</li>
+  <li class="link-item">Euro Politics</li>
+  <li class="link-item">Music</li>
+  <li class="link-item">Gun Control</li>
+</ul>

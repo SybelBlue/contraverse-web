@@ -19,3 +19,28 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+import ConvoSetup from "./convo_setup"
+
+let itemList = document.getElementsByClassName("link-item")
+let currentURL = window.location.href
+let item, text, relativeLink, newLink, newHTML = ""
+for (var i = 0; i < itemList.length; i++) {
+  item = itemList[i]
+  text = item.innerHTML
+  relativeLink = "/" + text.trim().replace(" ", "-")
+
+  if (window.location.pathname != "/new-convo")
+    newLink = currentURL + relativeLink
+  else
+    newLink = relativeLink
+
+  if ((text == "Gun Control") != (window.location.pathname == "/American-Politics")) continue;
+
+  newHTML += `
+    <li><a href="${newLink}">${text}</a></li>
+  `
+}
+
+itemList = document.getElementById("link-list")
+if (itemList != null)
+  itemList.innerHTML = newHTML

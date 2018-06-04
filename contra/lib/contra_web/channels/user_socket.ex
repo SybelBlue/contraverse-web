@@ -3,6 +3,8 @@ defmodule ContraWeb.UserSocket do
 
   ## Channels
   # channel "room:*", ContraWeb.RoomChannel
+  # this is where all our categories will go, template:
+  # channel "category:*", ContraWeb.CategoryChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
