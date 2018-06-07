@@ -3,11 +3,20 @@
   <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
 </div>
 
-<a href="<%= rating_path(@conn, :index) %>">
-  <div class="button">
-    End Convo
+<button onclick="show_rating_dialog()">End Convo</button>
+
+<div id="rating_modal" class="modal">
+
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>End Conversation</h2>
+    <p>Please rate whether both you and the other person were productive
+        during this dialogue.</p>
+    <button onclick="rate(true)">Yes, productive</button>
+    <button onclick="rate(false)">No, not productive</button>
   </div>
-</a>
+
+</div>
 
 <div class="row marketing">
   <div class="col-lg-6">
@@ -40,3 +49,34 @@
     </ul>
   </div>
 </div>
+
+<script>
+
+  var modal = document.getElementById('rating_modal');
+  var span = document.getElementsByClassName("close")[0];
+
+  function show_rating_dialog() {
+    modal.style.display = "block";
+  }
+
+  function rate(productive) {
+    modal.style.display = "none";
+    setTimeout(function() {
+      window.alert("Was it productive? " + productive);
+    }, 10);
+  }
+
+  // two methods from https://www.w3schools.com/howto/howto_css_modals.asp
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+</script>
