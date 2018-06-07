@@ -3,11 +3,13 @@
   <input type="text" placeholder="E-Mail Address" id="user-email"></input><br /><br />
   <input type="password" placeholder="password" id="user-pass"></input><br /> <br />
 
-  <button><a href="/home">Login</a></button>
-  <!-- the login whould be a SUBMIT once the server side of things has been
-        setup-->
-  <button><a href="/new">New User</a></button>
+  <a href="/home">
+    <input type="button" value="Login"></input>
+  </a>
 
+  <a href="/new">
+    <input type="button" value="New User"></input>
+  </a>
 
 </div>
 <div class=""
