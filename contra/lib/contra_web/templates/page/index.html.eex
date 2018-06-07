@@ -3,6 +3,12 @@
   <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
 </div>
 
+<a href="<%= rating_path(@conn, :index) %>">
+  <div class="button">
+    End Convo
+  </div>
+</a>
+
 <div class="row marketing">
   <div class="col-lg-6">
     <h4>Resources</h4>
