@@ -1,7 +1,11 @@
 <div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+  <h2><%= gettext "Welcome to %{name}!", name: "Contraverse" %></h2>
+  <p class="lead">Insert super interesting stuff here.</p>
 </div>
+<div class=""
+
+<!-- all data after this point needs to be repeated on all pages -->
+<!--This will not be necessary later on -->
 
 <button onclick="show_rating_dialog()">End Convo</button>
 
@@ -23,13 +27,7 @@
     <h4>Resources</h4>
     <ul>
       <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
-      </li>
-      <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
+        <a href="https://github.com/phoenixframework/phoenix">Place Holder</a>
       </li>
     </ul>
   </div>
@@ -38,13 +36,8 @@
     <h4>Help</h4>
     <ul>
       <li>
-        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
-      </li>
-      <li>
-        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
+        <a href="http://groups.google.com/group/phoenix-talk">Place Holder</a>
+
       </li>
     </ul>
   </div>
