@@ -62,7 +62,7 @@
   function rate(productive) {
     modal.style.display = "none";
     setTimeout(function() {
-      window.alert("Was it productive? " + productive);
+      window.alert(productive ? "Productive" : "Not Productive");
     }, 10);
   }
 
