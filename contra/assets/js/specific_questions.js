@@ -1,10 +1,9 @@
+import CommonFunctions from "./common_functions"
+
 let SpecificQuestions = {
   init(socket) {
-    let channel = socket.channel("convo-setup:specific-questions", {})
-    channel.join()
-      .receive("ok", resp => { console.log("Joined successfully", resp) })
-      .receive("error", resp => { console.log("Unable to join", resp) })
-    console.log("specific_questions.js");
+    let channelStr = "convo-setup:specific-questions"
+    let channel = CommonFunctions.joinChannel(socket, channelStr, {})
   },
 }
 

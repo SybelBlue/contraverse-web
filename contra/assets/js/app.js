@@ -23,8 +23,25 @@ import ConvoSetup from "./convo_setup"
 import ChatRoom from "./chat_room"
 import SpecificQuestions from "./specific_questions"
 
+let pathname = window.location.pathname.substring(1).toLowerCase()
+
+let category = null, topic = null
+
+if (!pathname.includes("/")) {
+  if (!pathname.includes("new-convo"))
+    category = pathname
+} else {
+  let indexOfSlash = pathname.indexOf("/")
+  category = pathname.substring(0, indexOfSlash)
+  topic = pathname.substring(indexOfSlash + 1, pathname.indexOf("/", indexOfSlash + 1))
+}
 let socket = new Socket("/socket", {
-  params: { token: window.userToken }
+  params: {
+    token: window.userToken,
+    pathname: pathname,
+    category: category,
+    topic: topic
+  }
 })
 
 socket.connect();
@@ -42,3 +59,5 @@ switch ((window.location.pathname.match(/\//g) || []).length) {
     ChatRoom.init(socket)
     break;
 }
+
+console.log(socket);

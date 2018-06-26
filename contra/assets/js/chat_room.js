@@ -1,4 +1,5 @@
 import {Socket/*, Presence*/} from "phoenix"
+import CommonFunctions from "./common_functions"
 
 let ChatRoom = {
   init(socket) {
@@ -6,11 +7,8 @@ let ChatRoom = {
   },
 
   join(socket) {
-    let channelStr = '' //fix
-    let channel = socket.channel(channelStr, {})
-    channel.join()
-      .receive("ok", resp => { console.log("Joined successfully", resp) })
-      .receive("error", resp => { console.log("Unable to join", resp) })
+    let channelStr = socket.params.category + ":" + "insert-id-here" //fix
+    let channel = CommonFunctions.joinChannel(socket, channelStr, {})
   },
 }
 

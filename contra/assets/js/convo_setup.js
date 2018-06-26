@@ -1,12 +1,20 @@
 // import {Presence, Socket} from "phoenix"
+import CommonFunctions from "./common_functions"
 
 let ConvoSetup = {
   init(socket) {
-    this.demo(window.location.pathname)
-    console.log(socket.topic);
+    this.join(socket)
+
+    this.demo(socket)
   },
 
-  demo(pathname) {
+  join(socket) {
+    let channelStr = "convo-setup:" + socket.params.pathname
+    let channel = CommonFunctions.joinChannel(socket, channelStr, {})
+  },
+
+  demo(socket) {
+      let pathname = socket.params.pathname;
       if (pathname.length == 0) return;
       let itemList = document.getElementsByClassName("link-item")
       let currentURL = window.location.href
@@ -16,12 +24,12 @@ let ConvoSetup = {
         text = item.innerHTML
         relativeLink = "/" + text.trim().replace(" ", "-")
 
-        if (pathname != "/new-convo")
+        if (pathname != "new-convo")
           newLink = currentURL + relativeLink
         else
           newLink = relativeLink
 
-        if ((text == "Gun Control") != (pathname == "/American-Politics")) continue;
+        if ((text == "Gun Control") != (pathname == "american-politics")) continue;
 
         newHTML += `
           <li><a href="${newLink}">${text}</a></li>
