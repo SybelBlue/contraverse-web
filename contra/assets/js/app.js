@@ -18,29 +18,27 @@ import "phoenix_html"
 // Local files can be imported directly using relative
 // paths "./socket" or full ones "web/static/js/socket".
 
-// import socket from "./socket"
+import {Socket} from "phoenix"
 import ConvoSetup from "./convo_setup"
+import ChatRoom from "./chat_room"
+import SpecificQuestions from "./specific_questions"
 
-let itemList = document.getElementsByClassName("link-item")
-let currentURL = window.location.href
-let item, text, relativeLink, newLink, newHTML = ""
-for (var i = 0; i < itemList.length; i++) {
-  item = itemList[i]
-  text = item.innerHTML
-  relativeLink = "/" + text.trim().replace(" ", "-")
+let socket = new Socket("/socket", {
+  params: { token: window.userToken }
+})
 
-  if (window.location.pathname != "/new-convo")
-    newLink = currentURL + relativeLink
-  else
-    newLink = relativeLink
-
-  if ((text == "Gun Control") != (window.location.pathname == "/American-Politics")) continue;
-
-  newHTML += `
-    <li><a href="${newLink}">${text}</a></li>
-  `
+socket.connect();
+//counts number of / in the url
+switch ((window.location.pathname.match(/\//g) || []).length) {
+  case 0:
+    break;
+  case 1: //new convo, category
+    ConvoSetup.init(socket)
+    break;
+  case 2:
+    SpecificQuestions.init(socket)
+    break;
+  case 3:
+    ChatRoom.init(socket)
+    break;
 }
-
-itemList = document.getElementById("link-list")
-if (itemList != null)
-  itemList.innerHTML = newHTML
