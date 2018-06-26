@@ -40,6 +40,7 @@ defmodule ContraWeb do
       import ContraWeb.Router.Helpers
       import ContraWeb.ErrorHelpers
       import ContraWeb.Gettext
+      import ContraWeb.Helpers.Auth, only: [signed_in?: 1]
     end
   end
 
