@@ -2,8 +2,15 @@ import CommonFunctions from "./common_functions"
 
 let SpecificQuestions = {
   init(socket) {
-    let channelStr = "convo-setup:specific-questions"
-    let channel = CommonFunctions.joinChannel(socket, channelStr, {})
+    let channel = this.join(socket)
+
+    // load questions here
+  },
+
+  join(socket){
+      let channelStr = "convo-setup:specific-questions"
+      let channel = CommonFunctions.joinChannel(socket, channelStr, {})
+      return channel
   },
 }
 

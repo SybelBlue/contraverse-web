@@ -1,14 +1,29 @@
-import {Socket/*, Presence*/} from "phoenix"
+// import {Socket, Presencea} from "phoenix"
 import CommonFunctions from "./common_functions"
 
 let ChatRoom = {
   init(socket) {
-    this.join(socket)
+    let channel = this.join(socket)
   },
 
   join(socket) {
-    let channelStr = socket.params.category + ":" + "insert-id-here" //fix
+    socket.params.chatroomData = this.getRoomData()
+    let params = socket.params
+    let channelStr = params.category + ":" + params.chatroomData.id
     let channel = CommonFunctions.joinChannel(socket, channelStr, {})
+    return channel
+  },
+
+  // returns object literal of room data ////////////TODO!!!!!!!!
+  getRoomData() {
+    let pathname = window.location.pathname
+    let id = pathname.substring(pathname.lastIndexOf('/') + 1)
+
+    // returns object literal of room data, ////////////FIX!!!!!!!!
+    return {
+      id: id,
+      active: true
+    }
   },
 }
 

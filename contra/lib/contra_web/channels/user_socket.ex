@@ -4,6 +4,7 @@ defmodule ContraWeb.UserSocket do
   ## Channels
   # channel "room:*", ContraWeb.RoomChannel
   channel "convo-setup:*", ContraWeb.ConvoSetupChannel
+
   # this is where all our categories will go, template:
   # channel "category:*", ContraWeb.ChatChannel
   channel "american-politics:*", ContraWeb.ChatChannel

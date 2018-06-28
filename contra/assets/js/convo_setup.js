@@ -3,7 +3,7 @@ import CommonFunctions from "./common_functions"
 
 let ConvoSetup = {
   init(socket) {
-    this.join(socket)
+    let channel = this.join(socket)
 
     this.demo(socket)
   },
@@ -11,6 +11,7 @@ let ConvoSetup = {
   join(socket) {
     let channelStr = "convo-setup:" + socket.params.pathname
     let channel = CommonFunctions.joinChannel(socket, channelStr, {})
+    return channel
   },
 
   demo(socket) {

@@ -5,7 +5,7 @@ defmodule ContraWeb.ChatChannel do
 
   def join("american-politics:" <> room_id, _message, socket) do
     # send(self(), :after_join)
-    Logger.debug "american-politics"
+    Logger.debug "Topic: american-politics"
     Logger.debug "Room id: #{inspect(room_id)}"
     {:ok, socket}
   end

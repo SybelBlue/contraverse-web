@@ -4,8 +4,8 @@
 defmodule ContraWeb.TestController do
   use ContraWeb, :controller
 
-  def index(conn, params) do
-    # render conn, "index.html"
+  def index(conn, _params) do
+    # render conn, "index.html" #Default code
     conn
     |> put_flash(:info, "This is from flash info in test_controller")
     |> render("index.html")

@@ -18,46 +18,29 @@ import "phoenix_html"
 // Local files can be imported directly using relative
 // paths "./socket" or full ones "web/static/js/socket".
 
-import {Socket} from "phoenix"
+import socket from "./socket"
 import ConvoSetup from "./convo_setup"
 import ChatRoom from "./chat_room"
 import SpecificQuestions from "./specific_questions"
 
-let pathname = window.location.pathname.substring(1).toLowerCase()
+// toggles debugging statements
+socket.params.debuggingMode = false
 
-let category = null, topic = null
-
-if (!pathname.includes("/")) {
-  if (!pathname.includes("new-convo"))
-    category = pathname
-} else {
-  let indexOfSlash = pathname.indexOf("/")
-  category = pathname.substring(0, indexOfSlash)
-  topic = pathname.substring(indexOfSlash + 1, pathname.indexOf("/", indexOfSlash + 1))
-}
-let socket = new Socket("/socket", {
-  params: {
-    token: window.userToken,
-    pathname: pathname,
-    category: category,
-    topic: topic
-  }
-})
-
+// connects to socket to enable joining channels, DO NOT MOVE!
 socket.connect();
-//counts number of / in the url
-switch ((window.location.pathname.match(/\//g) || []).length) {
-  case 0:
-    break;
-  case 1: //new convo, category
+
+//counts number of segments in the url
+switch (socket.params.pathname.split('/').length) {
+  case 1: // /new-convo or /category -> category/topic selection
     ConvoSetup.init(socket)
     break;
-  case 2:
+  case 2: // /category/topic/ -> specific question
     SpecificQuestions.init(socket)
     break;
-  case 3:
+  case 3: // /category/topic/id -> chatroom
     ChatRoom.init(socket)
     break;
 }
 
-console.log(socket);
+if (socket.params.debuggingMode)
+  console.log(socket);

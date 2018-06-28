@@ -7,7 +7,7 @@ defmodule ContraWeb.ChatController do
   The params entries are availiable in html via @category, @topic, @chat
   """
   def show(conn, %{"category" => category,
-    "topic" => topic, "chat" => chat}) do
+    "topic" => topic, "chat_id" => chat}) do
     conn
     |> assign(:category, category)
     |> assign(:topic, topic)
