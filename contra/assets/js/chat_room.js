@@ -17,11 +17,11 @@ let ChatRoom = {
   // returns object literal of room data ////////////TODO!!!!!!!!
   getRoomData() {
     let pathname = window.location.pathname
-    let id = pathname.substring(pathname.lastIndexOf('/') + 1)
+    let chat_id = pathname.substring(pathname.lastIndexOf('/') + 1)
 
     // returns object literal of room data, ////////////FIX!!!!!!!!
     return {
-      id: id,
+      id: chat_id,
       active: true
     }
   },

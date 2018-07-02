@@ -1,4 +1,4 @@
 <h1>Chat!</h1>
 <div>
-  home > <%= @category %> > <%= @topic %> > <%= @chat %>
+  home > <%= @category %> > <%= @topic %> > <%= @chat_id %>
 </div>

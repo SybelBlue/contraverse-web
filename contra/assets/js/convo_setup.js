@@ -22,16 +22,18 @@ let ConvoSetup = {
       let item, text, relativeLink, newLink, newHTML = ""
       for (var i = 0; i < itemList.length; i++) {
         item = itemList[i]
-        text = item.innerHTML
-        relativeLink = "/" + text.trim().replace(" ", "-")
+        text = item.innerHTML.trim()
+        relativeLink = "/" + text
 
-        if (pathname != "new-convo")
+        relativeLink = CommonFunctions.replaceAll(relativeLink, " ", "-")
+
+        if (!pathname.includes("new-convo"))
           newLink = currentURL + relativeLink
         else
           newLink = relativeLink
 
-        if ((text == "Gun Control") != (pathname == "american-politics")) continue;
-
+        if ((item.className.includes("topic")) == (socket.params.category == null)) continue;
+        
         newHTML += `
           <li><a href="${newLink}">${text}</a></li>
         `

@@ -24,7 +24,7 @@ import ChatRoom from "./chat_room"
 import SpecificQuestions from "./specific_questions"
 
 // toggles debugging statements
-socket.params.debuggingMode = false
+socket.params.debuggingMode = true
 
 // connects to socket to enable joining channels, DO NOT MOVE!
 socket.connect();
@@ -34,7 +34,7 @@ switch (socket.params.pathname.split('/').length) {
   case 1: // /new-convo or /category -> category/topic selection
     ConvoSetup.init(socket)
     break;
-  case 2: // /category/topic/ -> specific question
+  case 2: // /category/topic -> specific question
     SpecificQuestions.init(socket)
     break;
   case 3: // /category/topic/id -> chatroom

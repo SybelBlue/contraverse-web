@@ -2,12 +2,19 @@ defmodule ContraWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", ContraWeb.RoomChannel
   channel "convo-setup:*", ContraWeb.ConvoSetupChannel
 
   # this is where all our categories will go, template:
   # channel "category:*", ContraWeb.ChatChannel
-  channel "american-politics:*", ContraWeb.ChatChannel
+  #
+  # note that chat_channel.ex must have a new join
+  # method added to pattern match. See file for template
+  channel "practice-arena:*", ContraWeb.ChatChannel
+  channel "politics:*", ContraWeb.ChatChannel
+  channel "ethics:*", ContraWeb.ChatChannel
+  channel "philosophy:*", ContraWeb.ChatChannel
+  channel "pop-culture:*", ContraWeb.ChatChannel
+  channel "religion:*", ContraWeb.ChatChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

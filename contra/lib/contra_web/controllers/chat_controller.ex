@@ -11,7 +11,7 @@ defmodule ContraWeb.ChatController do
     conn
     |> assign(:category, category)
     |> assign(:topic, topic)
-    |> assign(:chat, chat)
+    |> assign(:chat_id, chat)
     |> render("index.html")
   end
 end
