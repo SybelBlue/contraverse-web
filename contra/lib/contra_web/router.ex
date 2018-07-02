@@ -25,6 +25,11 @@ defmodule ContraWeb.Router do
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete
 
+    # for testing purposes only
+    get "/test", TestController, :show
+    # passes URLs of the format .com/test/<val> into TestController.jimmy/2
+    get "/test/:body", TestController, :jimmy
+
     # passes all items formatted ...com/<str> to ConvoSetupController,
     # so long as <str> is not "test", including the /new-convo page
     get "/:category", ConvoSetupController, :show
