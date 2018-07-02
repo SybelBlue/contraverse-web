@@ -1,0 +1,4 @@
+<h1>Specific Question!</h1>
+<h2>
+  home > <%= @category %> > <%= @topic %>
+</h2>

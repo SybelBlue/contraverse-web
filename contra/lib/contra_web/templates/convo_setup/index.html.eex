@@ -1,0 +1,17 @@
+<h1>Convo Setup!</h1>
+<div>
+  home > <%= @category %>
+</div>
+<ul id="link-list">
+  <li class="link-item category">Practice Arena</li>
+  <li class="link-item category">Politics</li>
+  <li class="link-item category">Ethics</li>
+  <li class="link-item category">Philosophy</li>
+  <li class="link-item category">Pop Culture</li>
+  <li class="link-item category">Religion</li>
+
+  <li class="link-item topic">Gun Control</li>
+  <li class="link-item topic">The Trolley Problem</li>
+  <li class="link-item topic">Brain in Space</li>
+  <li class="link-item topic">Separated Transgendered Bathroms</li>
+</ul>
