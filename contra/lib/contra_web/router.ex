@@ -16,22 +16,14 @@ defmodule ContraWeb.Router do
   scope "/", ContraWeb do
     pipe_through :browser # Use the default browser stack
 
-    # this directs to the home page
-    get "/", HomeController, :index
+    get "/", PageController, :index
+    get "/home", HomeController, :index
+    get "/new", NewController, :index #I can't think of a better name for the new-user screen
+    resources "/registrations", UserController, only: [:create, :new]
 
-    ## NOTE: adding specific pages is done here,
-    # however, to prevent them being processed as
-    # categories by app.js and socket.js, it must
-    # also be added to the exceptions list in
-    # socket.js
-
-    # this directs to the login page
-    get "/login", LoginController, :index
-
-    #this directs all items matching .../test to TestController.index
-    get "/test", TestController, :index
-    #/:body passes what val matches as a map %{"body" => val} to TestController.jimmy
-    get "/test/:body", TestController, :jimmy
+    get "/login", SessionController, :new
+    post "/login", SessionController, :create
+    delete "/logout", SessionController, :delete
 
     # passes all items formatted ...com/<str> to ConvoSetupController,
     # so long as <str> is not "test", including the /new-convo page

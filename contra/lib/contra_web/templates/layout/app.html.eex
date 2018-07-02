@@ -16,10 +16,12 @@
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
-            <li><a href="/login">Login</a></li>
-          </ul>
-          <ul class="nav nav-pills pull-right">
             <li><a href="http://www.phoenixframework.org/docs">About Contraverse</a></li>
+            <%= if signed_in?(@conn) do %>
+              <li><%=link "Sign Out", to: session_path(@conn, :delete), method: :delete %></li>
+            <% else %>
+              <li><%=link "Sign in", to: session_path(@conn, :new) %></li>
+            <% end %>
           </ul>
         </nav>
         <!-- <span class="logo"></span> -->
@@ -33,6 +35,7 @@
 
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
+
       </main>
 
     </div> <!-- /container -->
