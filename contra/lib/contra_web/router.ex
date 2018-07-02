@@ -16,7 +16,18 @@ defmodule ContraWeb.Router do
   scope "/", ContraWeb do
     pipe_through :browser # Use the default browser stack
 
+    # this directs to the home page
     get "/", HomeController, :index
+
+    ## NOTE: adding specific pages is done here,
+    # however, to prevent them being processed as
+    # categories by app.js and socket.js, it must
+    # also be added to the exceptions list in
+    # socket.js
+
+    # this directs to the login page
+    get "/login", LoginController, :index
+
     #this directs all items matching .../test to TestController.index
     get "/test", TestController, :index
     #/:body passes what val matches as a map %{"body" => val} to TestController.jimmy

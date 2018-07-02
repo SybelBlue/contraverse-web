@@ -24,5 +24,18 @@ let CommonFunctions = {
 
     return str
   },
+
+  includesAny(source, targets) {
+    let srcLen = source.length, item
+
+    for (let i = 0; i < targets.length; i++) {
+      item = targets[i]
+
+      if (item.length > srcLen) continue
+      if (source.includes(item)) return true
+    }
+
+    return false
+  },
 }
 export default CommonFunctions

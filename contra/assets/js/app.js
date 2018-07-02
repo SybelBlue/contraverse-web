@@ -24,23 +24,27 @@ import ChatRoom from "./chat_room"
 import SpecificQuestions from "./specific_questions"
 
 // toggles debugging statements
-socket.params.debuggingMode = true
+socket.params.debuggingMode = false
 
 // connects to socket to enable joining channels, DO NOT MOVE!
 socket.connect();
 
-//counts number of segments in the url
-switch (socket.params.pathname.split('/').length) {
-  case 1: // /new-convo or /category -> category/topic selection
-    ConvoSetup.init(socket)
-    break;
-  case 2: // /category/topic -> specific question
-    SpecificQuestions.init(socket)
-    break;
-  case 3: // /category/topic/id -> chatroom
-    ChatRoom.init(socket)
-    break;
+// when in convomode (topic selection, specific questions, chatroom)...
+if (socket.params.convoMode) {
+  // ...counts number of segments in the url to determine route
+  switch (socket.params.pathname.split('/').length) {
+    case 1: // / or /new-convo or /category -> category/topic selection
+      ConvoSetup.init(socket)
+      break;
+    case 2: // /category/topic -> specific question
+      SpecificQuestions.init(socket)
+      break;
+    case 3: // /category/topic/id -> chatroom
+      ChatRoom.init(socket)
+      break;
+  }
 }
 
+// logs socket in debugging mode
 if (socket.params.debuggingMode)
   console.log(socket);

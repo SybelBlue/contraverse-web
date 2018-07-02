@@ -3,11 +3,15 @@
 // fields that are filled upon entry to the proper pages
 
 import {Socket} from "phoenix"
+import CommonFunctions from "./common_functions"
+
+// Add exceptions to the routing process here
+let exceptions = ["login", "test"]
 
 // Setting up the params fields
 // pathname stores everything beyond the first slash in lowercase, ie
 // www.contra.com/American-Politics/Gun-Control -> american-poltics/gun-control
-let pathname = window.location.pathname.substring(1).toLowerCase()
+let pathname = window.location.pathname.trim().substring(1).toLowerCase()
 // category is filled with one of the several major topic categories
 // www.contra.com/American-Politics/Gun-Control -> american-poltics
 let category = null
@@ -16,7 +20,11 @@ let category = null
 // www.contra.com/American-Politics/Gun-Control/<id> -> gun-control
 let topic = null
 
-if (!pathname.includes("/")) {
+// convoMode is true when in convo setup, specific questions, or chatroom
+let convoMode = pathname.length > 0
+convoMode = convoMode && !CommonFunctions.includesAny(pathname, exceptions)
+
+if (convoMode && !pathname.includes("/")) {
   if (!pathname.includes("new-convo"))
     category = pathname
 } else {
@@ -35,6 +43,7 @@ let socket = new Socket("/socket", {
     category: category,
     topic: topic,
     chatroomData: chatroomData,
+    convoMode: convoMode,
     debuggingMode: false //!!! also toggled in ./app.js
   }
 })

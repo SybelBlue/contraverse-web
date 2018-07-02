@@ -5,6 +5,12 @@ let SpecificQuestions = {
     let channel = this.join(socket)
 
     // load questions here
+    let area = document.getElementById("question-area")
+
+    // matchmaking and chat_id generation here
+    let id = "temp_id" //fix
+    let link = window.location.href + "/" + id
+    area.innerHTML = `<a href=${link}>Continue to Chat</a>`
   },
 
   join(socket){

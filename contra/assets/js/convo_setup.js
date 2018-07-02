@@ -33,7 +33,7 @@ let ConvoSetup = {
           newLink = relativeLink
 
         if ((item.className.includes("topic")) == (socket.params.category == null)) continue;
-        
+
         newHTML += `
           <li><a href="${newLink}">${text}</a></li>
         `
