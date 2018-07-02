@@ -1,6 +1,16 @@
 <div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}!", name: "Contraverse" %></h2>
-  <p class="lead">Insert super interesting stuff here.</p>
+  <h2>Login Screen will go here!</h2>
+  <input type="text" placeholder="E-Mail Address" id="user-email"></input><br /><br />
+  <input type="password" placeholder="password" id="user-pass"></input><br /> <br />
+
+  <a href="/home">
+    <input type="button" value="Login"></input>
+  </a>
+
+  <a href="/new">
+    <input type="button" value="New User"></input>
+  </a>
+
 </div>
 <div class=""
 

@@ -1,6 +1,9 @@
 <div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}!", name: "Contraverse" %></h2>
-  <p class="lead">Insert super interesting stuff here.</p>
+  <h2>Home Screen will go here!</h2>
+
+  <!-- <li>
+    <a href="/new-convo">New Conversation</a>
+  </li> -->
 </div>
 <div class=""
 
