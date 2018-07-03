@@ -16,11 +16,13 @@ defmodule ContraWeb.Router do
   scope "/", ContraWeb do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
-    get "/home", HomeController, :index
+    get "/", PageController, :index #Base screen that the default url heads to
+    get "/home", HomeController, :index #The base User Screen that you can then use to access conversations
     get "/new", NewController, :index #I can't think of a better name for the new-user screen
-    resources "/registrations", UserController, only: [:create, :new]
+    resources "/registrations", UserController, only: [:create, :new]  #Handels all user registration
 
+
+    # This is all to manage the login/out functionality
     get "/login", SessionController, :new
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete
