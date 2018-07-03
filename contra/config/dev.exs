@@ -52,7 +52,7 @@ config :phoenix, :stacktrace_depth, 20
 config :contra, Contra.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "contraverse2018",
+  password: "Contraverse2018",
   database: "contra_dev",
   hostname: "localhost",
   pool_size: 10
