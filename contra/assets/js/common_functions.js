@@ -38,4 +38,17 @@ let CommonFunctions = {
     return false
   },
 }
+
+Object.defineProperty(String.prototype, "includesAny", {
+    value: function includesAny(targets) {
+        return CommonFunctions.includesAny(this, targets);
+    }
+});
+
+Object.defineProperty(String.prototype, "replaceAll", {
+    value: function replaceAll(target, replacement) {
+        return CommonFunctions.replaceAll(this, target, replacement);
+    }
+});
+
 export default CommonFunctions

@@ -24,7 +24,7 @@ import ChatRoom from "./chat_room"
 import SpecificQuestions from "./specific_questions"
 
 // toggles debugging statements
-socket.params.debuggingMode = true
+socket.params.debuggingMode = false
 
 // connects to socket to enable joining channels, DO NOT MOVE!
 socket.connect();

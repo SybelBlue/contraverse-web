@@ -6,7 +6,7 @@ import {Socket} from "phoenix"
 import CommonFunctions from "./common_functions"
 
 // Add exceptions to the routing process here
-let exceptions = ["login", "test"]
+let exceptions = ["home","registration","new-user","login", "logout", "test"]
 
 // Setting up the params fields
 // pathname stores everything beyond the first slash in lowercase, ie
@@ -21,8 +21,7 @@ let category = null
 let topic = null
 
 // convoMode is true when in convo setup, specific questions, or chatroom
-let convoMode = pathname.length > 0
-convoMode = convoMode && !CommonFunctions.includesAny(pathname, exceptions)
+let convoMode = pathname.length > 0 && !pathname.includesAny(exceptions)
 
 if (convoMode && !pathname.includes("/")) {
   if (!pathname.includes("new-convo"))

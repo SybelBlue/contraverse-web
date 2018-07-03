@@ -23,9 +23,7 @@ let ConvoSetup = {
       for (var i = 0; i < itemList.length; i++) {
         item = itemList[i]
         text = item.innerHTML.trim()
-        relativeLink = "/" + text
-
-        relativeLink = CommonFunctions.replaceAll(relativeLink, " ", "-")
+        relativeLink = "/" + text.replaceAll(" ", "-")
 
         if (!pathname.includes("new-convo"))
           newLink = currentURL + relativeLink
