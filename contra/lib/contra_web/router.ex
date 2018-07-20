@@ -24,6 +24,7 @@ defmodule ContraWeb.Router do
     get "/home", HomeController, :index
     get "/new-user", NewController, :index #I can't think of a better name for the new-user screen
     resources "/registrations", UserController, only: [:create, :new]
+    get "/registrations/terms", UserController, :terms
 
     get "/login", SessionController, :new
     post "/login", SessionController, :create

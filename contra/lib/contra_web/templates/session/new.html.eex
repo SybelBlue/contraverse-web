@@ -14,7 +14,7 @@
 
   <div class="form-group">
     <%= submit "Sign in" %>
-    <a href="/registrations/new">
+    <a href="/registrations/terms">
       <input type="button" value="New User"></input>
     </a>
   </div>
