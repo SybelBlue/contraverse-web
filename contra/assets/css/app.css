@@ -60,13 +60,6 @@ body, form, ul, table {
   padding: 15px;
 }
 
-button a {
-  color: white;
-}
-button a:hover {
-  color: lightgray;
-}
-
 .convo-chooser {
   display: flex;
   flex-direction: column;

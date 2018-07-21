@@ -7,9 +7,17 @@ defmodule ContraWeb.SpecificQuestionController do
   The params entries are availiable in html via @category, @topic
   """
   def show(conn, %{"category" => category, "topic" => topic}) do
+    question = "Are you going to answer this question?"
+    radios = [
+      %{:value => "yes", :label => "Yes"},
+      %{:value => "no", :label => "No"},
+      %{:value => "none", :label => "None of your business"}
+    ]
     conn
     |> assign(:category, category)
     |> assign(:topic, topic)
+    |> assign(:question, question)
+    |> assign(:radios, radios)
     |> render("index.html")
   end
 end

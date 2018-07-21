@@ -2,6 +2,28 @@
 <h2>
   home > <%= @category %> > <%= @topic %>
 </h2>
-<div id="question-area">
 
-</div>
+<form>
+  <p class="question">
+    Question: <%= @question %>
+  </p>
+  <fieldset>
+    <%= for radio <- @radios do %>
+      <div>
+        <input type="radio" name="options" value="<%= radio[:value] %>">
+        <label><%= radio[:label] %></label>
+      </div>
+    <% end %>
+  </fieldset>
+</form>
+<div id="question-area"></div>
+
+<style>
+.question {
+  font-weight: bold;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+</style>

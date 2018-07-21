@@ -1,6 +1,6 @@
 
 
-  <button class="rounded-button"><a href="/new-convo">New Conversation</a></button>
+  <a href="/new-convo"><button class="rounded-button">New Conversation</button></a>
 
   <h4 style="margin-top:30px">Continue an Existing Conversation:</h4>
   <div class="convo-chooser">
