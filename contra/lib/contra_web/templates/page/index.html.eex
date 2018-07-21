@@ -2,7 +2,6 @@
   <h2><%= gettext "Welcome to %{name}!", name: "Contraverse" %></h2>
   <p class="lead"><a href="/new-convo">Start Contraversing</a></p>
 </div>
-<div class=""
 
 <!-- all data after this point needs to be repeated on all pages -->
 <!--This will not be necessary later on -->
