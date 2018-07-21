@@ -3,9 +3,9 @@
   home > <%= @category %> > <%= @topic %> > <%= @chat_id %>
 </div>
 <button onclick="show_rating_dialog()">End Convo</button>
+<button onclick="show_response_dialog()" style="float:right">View Responses</button>
 
-<div id="rating_modal" class="modal">
-
+<div id="ratingModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
     <h2>End Conversation</h2>
@@ -14,36 +14,51 @@
     <button onclick="rate(true)">Yes, productive</button>
     <button onclick="rate(false)">No, not productive</button>
   </div>
+</div>
 
+<div id="responseModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Responses</h3>
+    <p>Your response: No. <br>
+    Their response: Yes.</p>
+  </div>
 </div>
 
 <script>
 
-  var modal = document.getElementById('rating_modal');
-  var span = document.getElementsByClassName("close")[0];
+  var ratingModal = document.getElementById('ratingModal');
+  var responseModal = document.getElementById('responseModal');
 
   function show_rating_dialog() {
-    modal.style.display = "block";
+    ratingModal.style.display = "block";
+  }
+
+  function show_response_dialog() {
+    responseModal.style.display = "block";
   }
 
   function rate(productive) {
-    modal.style.display = "none";
+    ratingModal.style.display = "none";
     setTimeout(function() {
       window.alert(productive ? "Productive" : "Not Productive");
     }, 10);
   }
 
-  // two methods from https://www.w3schools.com/howto/howto_css_modals.asp
-
-  // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
-    if (event.target == modal) {
+    var target = event.target;
+    // When the user clicks anywhere outside of a modal, close it
+    if (target.classList.contains('modal')) {
+      target.style.display = "none";
+    }
+    // When user clicks on a "close" element, close the parent modal.
+    else if (target.classList.contains('close')) {
+      var modal = target.parentElement;
+      // find the parent that is a modal
+      while (!modal.classList.contains('modal')) {
+        modal = modal.parentElement;
+      }
       modal.style.display = "none";
     }
-  }
-
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
-    modal.style.display = "none";
   }
 </script>
