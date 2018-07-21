@@ -53,7 +53,7 @@ body, form, ul, table {
   border-bottom: 1px solid #e5e5e5;
 }
 
-button {
+.rounded-button {
   background-color: blue;
   color: white;
   border-radius: 15px;
@@ -65,6 +65,14 @@ button a {
 }
 button a:hover {
   color: lightgray;
+}
+
+.convo-chooser {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  height: 75px;
+  overflow: auto;
 }
 
 /* Supporting marketing content */

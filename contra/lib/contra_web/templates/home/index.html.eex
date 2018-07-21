@@ -1,6 +1,21 @@
 
 
-  <button><a href="/new-convo">New Conversation</a></button>
+  <button class="rounded-button"><a href="/new-convo">New Conversation</a></button>
+
+  <h4 style="margin-top:30px">Continue an Existing Conversation:</h4>
+  <div class="convo-chooser">
+    <a href="/chat/test/test">Existing Convo 1</a>
+    <a href="/chat/test/test">Existing Convo 2</a>
+  </div>
+
+  <h4 style="margin-top:30px">View an Old Conversation:</h4>
+  <div class="convo-chooser">
+    <a href="/chat/test/test">Old Convo 1</a>
+    <a href="/chat/test/test">Old Convo 2</a>
+    <a href="/chat/test/test">Old Convo 3</a>
+    <a href="/chat/test/test">Old Convo 4</a>
+    <a href="/chat/test/test">Old Convo 5</a>
+  </div>
 
 <!-- all data after this point needs to be repeated on all pages -->
 <!--This will not be necessary later on -->
