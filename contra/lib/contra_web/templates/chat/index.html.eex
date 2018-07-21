@@ -11,8 +11,8 @@
     <h2>End Conversation</h2>
     <p>Please rate whether both you and the other person were productive
         during this dialogue.</p>
-    <button onclick="rate(true)">Yes, productive</button>
-    <button onclick="rate(false)">No, not productive</button>
+    <%= button("Yes, productive", to: "/home", method: "get", onclick: "rate(true)") %>
+    <%= button("No, not productive", to: "/home", method: "get", onclick: "rate(false)") %>
   </div>
 </div>
 
