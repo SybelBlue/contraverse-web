@@ -4,17 +4,16 @@
 
   <h4 style="margin-top:30px">Continue an Existing Conversation:</h4>
   <div class="convo-chooser">
-    <a href="/chat/test/test">Existing Convo 1</a>
-    <a href="/chat/test/test">Existing Convo 2</a>
+    <%= for link <- @existing_convos do %>
+      <a href="<%= link[:href] %>"><%= link[:text] %></a>
+    <% end %>
   </div>
 
   <h4 style="margin-top:30px">View an Old Conversation:</h4>
   <div class="convo-chooser">
-    <a href="/chat/test/test">Old Convo 1</a>
-    <a href="/chat/test/test">Old Convo 2</a>
-    <a href="/chat/test/test">Old Convo 3</a>
-    <a href="/chat/test/test">Old Convo 4</a>
-    <a href="/chat/test/test">Old Convo 5</a>
+    <%= for link <- @old_convos do %>
+      <a href="<%= link[:href] %>"><%= link[:text] %></a>
+    <% end %>
   </div>
 
 <!-- all data after this point needs to be repeated on all pages -->
