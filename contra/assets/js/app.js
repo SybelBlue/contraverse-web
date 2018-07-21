@@ -24,10 +24,12 @@ import ChatRoom from "./chat_room"
 import SpecificQuestions from "./specific_questions"
 
 // toggles debugging statements
-socket.params.debuggingMode = false
+socket.params.debuggingMode = true
 
 // connects to socket to enable joining channels, DO NOT MOVE!
 socket.connect();
+
+let channel = null;
 
 // when in convomode (topic selection, specific questions, chatroom)...
 if (socket.params.convoMode) {

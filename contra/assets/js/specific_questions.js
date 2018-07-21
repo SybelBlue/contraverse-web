@@ -11,6 +11,8 @@ let SpecificQuestions = {
     let id = "temp_id" //fix
     let link = window.location.href + "/" + id
     area.innerHTML = `<a href=${link}>Continue to Chat</a>`
+
+    return channel;
   },
 
   join(socket){
