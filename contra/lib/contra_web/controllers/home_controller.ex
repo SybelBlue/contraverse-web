@@ -19,20 +19,22 @@ defmodule ContraWeb.HomeController do
       |> halt()
     end
   end
+
   def index(conn, _params) do
     # mock data
-    href = "/chat/test/test"
+    open_href = "/chat/test/open"
+    closed_href = "/chat/test/closed"
     existing_convos = [
-      %{:href => href, :text => "Existing Convo 1"},
-      %{:href => href, :text => "Existing Convo 2"}
+      %{:href => open_href, :text => "Existing Convo 1"},
+      %{:href => open_href, :text => "Existing Convo 2"}
     ]
     old_convos = [
-      %{:href => href, :text => "Old Convo 1"},
-      %{:href => href, :text => "Old Convo 2"},
-      %{:href => href, :text => "Old Convo 3"},
-      %{:href => href, :text => "Old Convo 4"},
-      %{:href => href, :text => "Old Convo 5"},
-      %{:href => href, :text => "Old Convo 6"}
+      %{:href => closed_href, :text => "Old Convo 1"},
+      %{:href => closed_href, :text => "Old Convo 2"},
+      %{:href => closed_href, :text => "Old Convo 3"},
+      %{:href => closed_href, :text => "Old Convo 4"},
+      %{:href => closed_href, :text => "Old Convo 5"},
+      %{:href => closed_href, :text => "Old Convo 6"}
     ]
     # assign and render
     conn

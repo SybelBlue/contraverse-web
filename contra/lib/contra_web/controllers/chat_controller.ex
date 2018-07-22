@@ -9,7 +9,10 @@ defmodule ContraWeb.ChatController do
   def show(conn, %{"category" => category,
     "topic" => topic, "chat_id" => chat}) do
     # mock data
-    open = true
+    open = false
+    if chat == "open" do
+      open = true
+    end
     messages = [
       %{:sent => true, :text => "Hello, how are you?"},
       %{:sent => false, :text => "I'm good, thanks for asking. How are you doing?"},
