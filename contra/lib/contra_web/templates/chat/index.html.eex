@@ -13,6 +13,11 @@
     </div>
   <% end %>
 </div>
+<div class="chat-send-bar">
+  <input class="chat-input" placeholder="Enter a message..."></input>
+  <button>SEND</button>
+</div>
+</div>
 
 <div id="ratingModal" class="modal">
   <div class="modal-content">
