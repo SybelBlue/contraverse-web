@@ -34,8 +34,9 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <h3>Responses</h3>
-    <p>Your response: No. <br>
-    Their response: Yes.</p>
+    <h4>The question was: <%= @responses[:question] %></h4>
+    <p>Your response: <%= @responses[:yours] %> <br>
+    Their response: <%= @responses[:theirs] %></p>
   </div>
 </div>
 

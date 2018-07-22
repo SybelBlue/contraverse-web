@@ -16,6 +16,11 @@ defmodule ContraWeb.ChatController do
       %{:sent => true, :text => "I am great. So can I ask what your reasoning was behind your answer to the prompt?"},
       %{:sent => false, :text => "I was about to ask you the same thing! Great minds truly do think alike."}
     ]
+    responses = %{
+      :question => "Here is where the question will go.",
+      :yours => "Yes.",
+      :theirs => "No."
+    }
     # assign and render
     conn
     |> assign(:category, category)
@@ -23,14 +28,7 @@ defmodule ContraWeb.ChatController do
     |> assign(:chat_id, chat)
     |> assign(:open, open)
     |> assign(:messages, messages)
+    |> assign(:responses, responses)
     |> render("index.html")
   end
-
-  # def addClassIfSent(_conn, sent) do
-  #   if sent do
-  #     "sent"
-  #   else
-  #     ""
-  #   end
-  # end
 end
