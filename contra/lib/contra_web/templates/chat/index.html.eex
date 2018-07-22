@@ -5,6 +5,15 @@
 <button onclick="show_rating_dialog()">End Convo</button>
 <button onclick="show_response_dialog()" style="float:right">View Responses</button>
 
+<div class="chat-area">
+  <%= for message <- @messages do %>
+    <!-- make message with class 'sent' if message[:sent] is true -->
+    <div class="message <%= if (message[:sent]), do: 'sent', else: '' %>">
+      <%= message[:text] %>
+    </div>
+  <% end %>
+</div>
+
 <div id="ratingModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>

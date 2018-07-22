@@ -92,6 +92,27 @@ body, form, ul, table {
 
 }
 
+.chat-area {
+  margin: 10px 0;
+  border: 1px solid gray;
+  height: 30vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.message {
+  margin: 5px;
+  background-color: lightgray;
+  border-radius: 10px;
+  padding: 5px;
+  align-self: flex-start;
+}
+.message.sent {
+  text-align: right;
+  align-self: flex-end;
+  background-color: lightblue;
+}
+
 
 /* This css is from https://www.w3schools.com/howto/howto_css_modals.asp */
 
