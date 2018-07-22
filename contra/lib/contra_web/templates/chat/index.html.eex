@@ -16,7 +16,8 @@
     </div>
   <% end %>
 </div>
-<div class="chat-send-bar">
+<!-- shown/hidden depending on whether convo is @open -->
+<div class="chat-send-bar" style="display:<%= if (@open), do: 'auto', else: 'none' %>">
   <input class="chat-input" placeholder="Enter a message..."></input>
   <button>SEND</button>
 </div>

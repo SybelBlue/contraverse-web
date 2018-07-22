@@ -95,7 +95,6 @@ body, form, ul, table {
 .chat-area {
   margin-top: 10px;
   border: 1px solid gray;
-  border-bottom: none;
   height: 50vh;
   overflow-y: auto;
   display: flex;
