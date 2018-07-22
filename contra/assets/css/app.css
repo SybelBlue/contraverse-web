@@ -22,12 +22,12 @@ body, form, ul, table {
   border-bottom: 1px solid #e5e5e5;
 }
 .logo {
-  width: 240px;
-  height: 240px;
+  height: 80px;
+  width: 120px;
   display: inline-block;
   margin-bottom: 1em;
   background-image: url("/images/phoenix.png");
-  background-size: 240px 240px;
+  background-size: cover;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -96,13 +96,14 @@ body, form, ul, table {
   margin-top: 10px;
   border: 1px solid gray;
   border-bottom: none;
-  height: 30vh;
+  height: 50vh;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
 }
 .message {
   margin: 5px;
+  max-width: 80%;
   background-color: lightgray;
   border-radius: 10px;
   padding: 5px;
