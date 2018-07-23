@@ -1,9 +1,9 @@
-// import {Socket, Presencea} from "phoenix"
 import CommonFunctions from "./common_functions"
 
 let ChatRoom = {
   init(socket) {
-    let channel = this.join(socket)
+    let channel = this.join(socket);
+    return channel;
   },
 
   join(socket) {

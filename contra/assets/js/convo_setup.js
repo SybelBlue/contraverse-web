@@ -1,17 +1,19 @@
 // import {Presence, Socket} from "phoenix"
-import CommonFunctions from "./common_functions"
+import CommonFunctions from "./common_functions" // defines string overloads
 
 let ConvoSetup = {
   init(socket) {
-    let channel = this.join(socket)
+    let channel = this.join(socket);
 
-    this.demo(socket)
+    this.demo(socket);
+
+    return channel;
   },
 
   join(socket) {
-    let channelStr = "convo-setup:" + socket.params.pathname
-    let channel = CommonFunctions.joinChannel(socket, channelStr, {})
-    return channel
+    let channelStr = "convo-setup:" + socket.params.pathname;
+    let channel = CommonFunctions.joinChannel(socket, channelStr, {});
+    return channel;
   },
 
   demo(socket) {

@@ -1,10 +1,10 @@
 defmodule ContraWeb.ConvoSetupChannel do
   use Phoenix.Channel
   require Logger
-  # alias ContraWeb.Presence
+  alias ContraWeb.Presence
 
   def join("convo-setup:" <> room_id, _message, socket) do
-    # send(self(), :after_join)
+    send(self(), :after_join)
     Logger.debug "Room id: #{inspect(room_id)}"
     {:ok, socket}
   end
@@ -17,10 +17,10 @@ defmodule ContraWeb.ConvoSetupChannel do
   # end
 
   def handle_info(:after_join, socket) do
-    # push socket, "presence_state", Presence.list(socket)
-    # {:ok, _} = Presence.track(socket, socket.assigns.user_id, %{
-      # online_at: inspect(System.system_time(:seconds))
-    # })
+    push socket, "presence_state", Presence.list(socket)
+    {:ok, _} = Presence.track(socket, socket.assigns.user_id, %{
+      online_at: inspect(System.system_time(:seconds))
+    })
     {:noreply, socket}
   end
 end

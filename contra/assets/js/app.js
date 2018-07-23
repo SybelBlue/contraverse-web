@@ -29,6 +29,8 @@ socket.params.debuggingMode = false
 // connects to socket to enable joining channels, DO NOT MOVE!
 socket.connect();
 
+let channel = null;
+
 // when in convomode (topic selection, specific questions, chatroom)...
 if (socket.params.convoMode) {
   // ...counts number of segments in the url to determine route
