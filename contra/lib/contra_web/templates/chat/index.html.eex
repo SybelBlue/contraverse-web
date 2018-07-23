@@ -2,3 +2,91 @@
 <div>
   home > <%= @category %> > <%= @topic %> > <%= @chat_id %>
 </div>
+<!-- one or the other of the next 2 buttons will be hidden depending on whether this chat is @open -->
+<button onclick="show_rating_dialog()" style="display:<%= if (@open), do: 'inline', else: 'none' %>">End Convo</button>
+<%= button("Return Home", to: "/home", method: "get", id: "home-button", style: "display:none") %>
+
+<button onclick="show_response_dialog()" style="float:right">View Responses</button>
+
+<div class="chat-area">
+  <%= for message <- @messages do %>
+    <!-- make message with class 'sent' if message[:sent] is true -->
+    <div class="message <%= if (message[:sent]), do: 'sent', else: '' %>">
+      <%= message[:text] %>
+    </div>
+  <% end %>
+</div>
+<!-- shown/hidden depending on whether convo is @open -->
+<div class="chat-send-bar" style="display:<%= if (@open), do: 'auto', else: 'none' %>">
+  <input class="chat-input" placeholder="Enter a message..."></input>
+  <button>SEND</button>
+</div>
+
+<div id="ratingModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>End Conversation</h2>
+    <p>Please rate whether both you and the other person were productive
+        during this dialogue.</p>
+    <%= button("Yes, productive", to: "/home", method: "get", onclick: "rate(true)") %>
+    <%= button("No, not productive", to: "/home", method: "get", onclick: "rate(false)") %>
+  </div>
+</div>
+
+<div id="responseModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Responses</h3>
+    <h4>The question was: <%= @responses[:question] %></h4>
+    <p>Your response: <%= @responses[:yours] %> <br>
+    Their response: <%= @responses[:theirs] %></p>
+  </div>
+</div>
+
+<script>
+
+  var ratingModal = document.getElementById('ratingModal');
+  var responseModal = document.getElementById('responseModal');
+
+  function show_rating_dialog() {
+    ratingModal.style.display = "block";
+  }
+
+  function show_response_dialog() {
+    responseModal.style.display = "block";
+  }
+
+  function rate(productive) {
+    ratingModal.style.display = "none";
+    setTimeout(function() {
+      window.alert(productive ? "Productive" : "Not Productive");
+    }, 10);
+  }
+
+  window.onclick = function(event) {
+    var target = event.target;
+    // When the user clicks anywhere outside of a modal, close it
+    if (target.classList.contains('modal')) {
+      target.style.display = "none";
+    }
+    // When user clicks on a "close" element, close the parent modal.
+    else if (target.classList.contains('close')) {
+      var modal = target.parentElement;
+      // find the parent that is a modal
+      while (!modal.classList.contains('modal')) {
+        modal = modal.parentElement;
+      }
+      modal.style.display = "none";
+    }
+  }
+
+  window.onload = function() {
+    // hide the "Return Home" button if this chat is open ("End Convo" button will display instead)
+    var homeButton = document.getElementById('home-button');
+    if (<%= @open %>) {
+      homeButton.style.display = "none";
+    } else {
+      homeButton.style.display = "inline";
+    }
+  };
+</script>

@@ -19,7 +19,27 @@ defmodule ContraWeb.HomeController do
       |> halt()
     end
   end
+
   def index(conn, _params) do
-    render conn, "index.html"
+    # mock data
+    open_href = "/chat/test/open"
+    closed_href = "/chat/test/closed"
+    existing_convos = [
+      %{:href => open_href, :text => "Existing Convo 1"},
+      %{:href => open_href, :text => "Existing Convo 2"}
+    ]
+    old_convos = [
+      %{:href => closed_href, :text => "Old Convo 1"},
+      %{:href => closed_href, :text => "Old Convo 2"},
+      %{:href => closed_href, :text => "Old Convo 3"},
+      %{:href => closed_href, :text => "Old Convo 4"},
+      %{:href => closed_href, :text => "Old Convo 5"},
+      %{:href => closed_href, :text => "Old Convo 6"}
+    ]
+    # assign and render
+    conn
+    |> assign(:existing_convos, existing_convos)
+    |> assign(:old_convos, old_convos)
+    |> render("index.html")
   end
 end

@@ -1,0 +1,17 @@
+<h1>Terms and Conditions</h1>
+<p>
+  This service is provided as-is without warranty.
+  You agree to indemnify and hold harmless Contraverse and
+  all of its subsidiaries to any damages caused by use of the
+  services or interruption of services due to circumstances out of
+  the control of Contraverse, including but not limited to
+  natural disaster, nuclear apocalypse, and acts of God.
+  In no event shall the damages owed to you by Contraverse
+  exceed 3 Hungarian kekfrank.
+</p>
+<a href="/registrations/new">
+  <input type="button" value="Accept"></input>
+</a>
+<a href="/login">
+  <input type="button" value="Decline"></input>
+</a>

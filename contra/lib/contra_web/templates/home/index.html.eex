@@ -1,8 +1,20 @@
-<div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}!", name: "Contraverse" %></h2>
-  <p class="lead"><a href="/new-convo">Start Contraversing</a></p>
-</div>
-<div class=""
+
+
+  <a href="/new-convo"><button class="rounded-button">New Conversation</button></a>
+
+  <h4 style="margin-top:30px">Continue an Existing Conversation:</h4>
+  <div class="convo-chooser">
+    <%= for link <- @existing_convos do %>
+      <a href="<%= link[:href] %>"><%= link[:text] %></a>
+    <% end %>
+  </div>
+
+  <h4 style="margin-top:30px">View an Old Conversation:</h4>
+  <div class="convo-chooser">
+    <%= for link <- @old_convos do %>
+      <a href="<%= link[:href] %>"><%= link[:text] %></a>
+    <% end %>
+  </div>
 
 <!-- all data after this point needs to be repeated on all pages -->
 <!--This will not be necessary later on -->

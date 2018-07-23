@@ -26,6 +26,10 @@ defmodule ContraWeb.UserController do
     end
   end
 
+  def terms(conn, _params) do
+    render conn, "terms.html"
+  end
+
   # def show(conn, %{"id" => id}) do
   #   user = Accounts.get_user!(id)
   #   render(conn, "show.html", user: user)
