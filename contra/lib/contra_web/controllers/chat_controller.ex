@@ -17,6 +17,7 @@ defmodule ContraWeb.ChatController do
       %{sent: true, text: "I am great. So can I ask what your reasoning was behind your answer to the prompt?"},
       %{sent: false, text: "I was about to ask you the same thing! Great minds truly do think alike."}
     ]
+
     responses = %{
       question: "Here is where the question will go.",
       yours: "Yes.",
