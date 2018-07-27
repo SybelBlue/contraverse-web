@@ -16,6 +16,7 @@ defmodule ContraWeb.Router do
   scope "/", ContraWeb do
     pipe_through :browser # Use the default browser stack
 
+<<<<<<< HEAD
     ## NOTE: each time a specific page is created, its
     # extention must be added to the list of exceptions
     # in the top of the socket.js file
@@ -25,7 +26,15 @@ defmodule ContraWeb.Router do
     get "/new-user", NewController, :index #I can't think of a better name for the new-user screen
     resources "/registrations", UserController, only: [:create, :new]
     get "/registrations/terms", UserController, :terms
+=======
+    get "/", PageController, :index #Base screen that the default url heads to
+    get "/home", HomeController, :index #The base User Screen that you can then use to access conversations
+    get "/new", NewController, :index #I can't think of a better name for the new-user screen
+    resources "/registrations", UserController, only: [:create, :new]  #Handels all user registration
+>>>>>>> home-screen-branch
 
+
+    # This is all to manage the login/out functionality
     get "/login", SessionController, :new
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete
