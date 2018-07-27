@@ -4,7 +4,7 @@
 </div>
 <!-- one or the other of the next 2 buttons will be hidden depending on whether this chat is @open -->
 <button onclick="show_rating_dialog()" style="display:<%= if (@open), do: 'inline', else: 'none' %>">End Convo</button>
-<%= button("Return Home", to: "/home", method: "get", id: "home-button", style: "display:none") %>
+<%= button("Return Home", to: "/", method: "get", id: "home-button", style: "display:none") %>
 
 <button onclick="show_response_dialog()" style="float:right">View Responses</button>
 

@@ -16,7 +16,7 @@
     <% end %>
   </fieldset>
 </form>
-<div id="question-area"></div>
+<div id="continue-link"></div>
 
 <style>
 .question {
