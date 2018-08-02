@@ -1,11 +1,35 @@
 defmodule ContraWeb.ChatController do
   use ContraWeb, :controller
 
+  alias Contra.Accounts
   @doc """
   Accepts the category, topic, and chat from the params url map and
   renders it
   The params entries are availiable in html via @category, @topic, @chat
   """
+  # !!!!!!!!!
+  # this section checks for authentication
+  plug :check_auth
+
+  defp check_auth(conn, _args) do
+    if user_id = get_session(conn, :current_user_id) do
+    current_user = Accounts.get_user!(user_id)
+
+    conn
+      |> assign(:current_user, current_user)
+      # |> put_flash(:info, "this worked, i guess")
+      # |> put_flash(:info, Accounts.get_user!(user_id))
+    else
+      conn
+      # |> redirect("to: session_path(conn, :index)")
+      # |> halt()
+      |> put_flash(:info, "Login Failed")
+      |> redirect(to: page_path(conn, :index))
+    end
+  end
+#
+# !!!!!!!!!!
+
   def show(conn, %{"category" => category,
     "topic" => topic, "chat_id" => chat}) do
     # mock data
