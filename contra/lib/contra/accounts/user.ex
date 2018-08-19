@@ -1,7 +1,6 @@
 defmodule Contra.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Contra.Accounts.User
   alias Comeonin.Bcrypt
 
   schema "users" do
