@@ -56,10 +56,11 @@ defmodule ContraWeb.ChatChannel do
 
   # It is also common to receive messages from the client and
   # broadcast to everyone in the current topic
-  # def handle_in("shout", payload, socket) do
-  #   broadcast socket, "shout", payload
-  #   {:noreply, socket}
-  # end
+  def handle_in("shout", payload, socket) do
+    #Chats.create_message(payload) #Old code for writing to database 
+    broadcast socket, "shout", payload
+    {:noreply, socket}
+  end
 
   def handle_info(:after_join, socket) do
     push socket, "presence_state", Presence.list(socket)
