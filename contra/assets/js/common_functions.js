@@ -1,9 +1,5 @@
 import {Presence} from "phoenix"
 
-// the sting used in innerHTML to represent all
-// users with id of length 0
-let anonymousStr = "<anonymous>"
-
 // the list of presences on the current channel
 let presences = {}
 
@@ -28,7 +24,7 @@ let CommonFunctions = {
     channel.on("presence_state", state => {
       presences = Presence.syncState(presences, state)
       try {
-        params.onStateChange(presences)
+        params.onStateChange(socket, presences)
       } catch (e) {
         this.logPresenceListHTML(socket, presences);
       }
@@ -38,7 +34,7 @@ let CommonFunctions = {
     channel.on("presence_diff", diff => {
       presences = Presence.syncDiff(presences, diff)
       try {
-        params.onStateChange(presences)
+        params.onStateChange(socket, presences)
       } catch (e) {
         this.logPresenceListHTML(socket, presences)
       }
@@ -81,21 +77,34 @@ let CommonFunctions = {
     for (let i = 0; i < targets.length; i++) {
       item = targets[i]
 
-      if (item.length > srcLen) continue
-      if (source.includes(item)) return true
+      if (item.length > srcLen)
+        continue;
+      if (source.includes(item))
+        return true;
     }
 
     return false
   },
+
+
+  // the sting used in innerHTML to represent all
+  // users with id of length 0
+  anonymousStr: "anonymous!",
 
   // generates inner HTML for a presence list
   generatePresenceListHTML(presences) {
     let response = ""
 
     Presence.list(presences, (id, {metas: [first, ...rest]}) => {
-      let count = rest.length + 1
-      if (id.length == 0) id = anonymousStr
-      response += `<br>${id} (count: ${count})</br>`
+      let count = rest.length + 1;
+      let label;
+
+      if (id.length == 0)
+        label = this.anonymousStr;
+      else
+        label = id;
+
+      response += `<br>${label} (count: ${count})</br>`;
     })
 
     return response;

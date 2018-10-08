@@ -43,6 +43,13 @@
   </div>
 </div>
 
+<!-- Logan added this thing -->
+<div class="list">
+  <ul style="list-style-type:disc" id="presence-list">
+    <!-- Presence list goes here -->
+  </ul>
+</div>
+
 <script>
 
   var ratingModal = document.getElementById('ratingModal');

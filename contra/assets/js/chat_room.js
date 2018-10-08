@@ -13,8 +13,20 @@ let ChatRoom = {
     socket.params.chatroomData = this.getRoomData()
     let params = socket.params
     let channelStr = params.category + ":" + params.chatroomData.id
-    let channel = CommonFunctions.joinChannel(socket, channelStr, {})
+    let channel =
+      CommonFunctions
+      .joinChannel(socket, channelStr, {onStateChange: this.markPresence})
     return channel
+  },
+
+  markPresence(socket, presences) {
+    CommonFunctions.logPresenceListHTML(socket, presences);
+
+    let presenceList = document.getElementById("presence-list");
+
+    presenceList.hidden = !socket.params.debuggingMode;
+
+    presenceList.innerHTML = CommonFunctions.generatePresenceListHTML(presences);
   },
 
   // returns object literal of room data ////////////TODO!!!!!!!!
@@ -46,7 +58,7 @@ let ChatRoom = {
     messageField.addEventListener('keypress', e => this.onSubmit(channel, e));
 
     let sendButton = document.getElementById("send-button");
-
+    //Handles hitting the send button
     sendButton.addEventListener('click', e => this.sendMessage(channel, e));
   },
 
@@ -85,8 +97,6 @@ let ChatRoom = {
     channel.on('shout', payload => {
       let messageList = document.getElementById("chat-area");
       let messageElement = this.createMessageHTML(payload);
-
-      console.log("recieving: " + messageElement);
       // store text as
       messageList.innerHTML += messageElement;
       messageList.scrollTop = messageList.scrollHeight;
@@ -94,11 +104,10 @@ let ChatRoom = {
   },
 
   createMessageHTML(payload) {
-    let sent = true/*username == payload.username*/? "sent" : ""//payload.username ===
+    //FIX THIS
+    let sent = true/*username == payload.username*/? "sent" : "";
 
-    let messageElement = `<div class="message `+ sent + `">` + payload.message + "</div>";
-
-    return messageElement
+    return `<div class="message ${sent}"> ${payload.message} </div>`;
   },
 
   getMessageField(){
