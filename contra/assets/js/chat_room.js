@@ -19,13 +19,17 @@ let ChatRoom = {
     return channel
   },
 
+  // custom chat room action for presence state change
   markPresence(socket, presences) {
     CommonFunctions.logPresenceListHTML(socket, presences);
 
+    // the presence list html
     let presenceList = document.getElementById("presence-list");
 
+    // display only if in debuggingMode
     presenceList.hidden = !socket.params.debuggingMode;
 
+    // use the standard generator for presence list html
     presenceList.innerHTML = CommonFunctions.generatePresenceListHTML(presences);
   },
 

@@ -17,33 +17,36 @@ let CommonFunctions = {
     let channel = socket.channel(channelStr, params)
 
     // on state change for presence, sync presence list,
-    // try to run params.onStateChange, on catch,
-    // run default code
+    // if onStateChange is specfied, run it, else, run default
 
     // state change is a new list of presences
     channel.on("presence_state", state => {
-      presences = Presence.syncState(presences, state)
-      try {
-        params.onStateChange(socket, presences)
-      } catch (e) {
+      presences = Presence.syncState(presences, state);
+
+      if (params.onStateChange != null)
+        params.onStateChange(socket, presences);
+      else
         this.logPresenceListHTML(socket, presences);
-      }
     })
 
     // state change is a new entry to existing list
     channel.on("presence_diff", diff => {
-      presences = Presence.syncDiff(presences, diff)
-      try {
-        params.onStateChange(socket, presences)
-      } catch (e) {
-        this.logPresenceListHTML(socket, presences)
-      }
+      presences = Presence.syncDiff(presences, diff);
+
+      if (params.onStateChange != null)
+        params.onStateChange(socket, presences);
+      else
+        this.logPresenceListHTML(socket, presences);
     })
 
     // join the channel with all responses logged
     channel.join()
-      .receive("ok", resp => { console.log("Joined \"" + channelStr + "\" successfully", resp) })
-      .receive("error", resp => { console.log("Unable to join \"" + channelStr + "\"", resp) })
+      .receive("ok", resp => {
+        console.log("Joined \"" + channelStr + "\" successfully", resp)
+      })
+      .receive("error", resp => {
+        console.log("Unable to join \"" + channelStr + "\"", resp)
+      })
 
     // when debug is on, print debug stack
     if (socket.params.debuggingMode)
