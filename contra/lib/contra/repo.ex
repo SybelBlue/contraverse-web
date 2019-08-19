@@ -1,5 +1,7 @@
 defmodule Contra.Repo do
-  use Ecto.Repo, otp_app: :contra
+  use Ecto.Repo,
+  otp_app: :contra,
+  adapter: Ecto.Adapters.Postgres
 
   @doc """
   Dynamically loads the repository url from the
